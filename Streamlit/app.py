@@ -8,6 +8,10 @@ import joblib
 from PIL import Image
 from tensorflow.keras.models import load_model
 from tensorflow.keras.applications.resnet50 import preprocess_input
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+ROOT_DIR = BASE_DIR.parent
 
 with st.sidebar:
     st.markdown("<h1 style='text-align: center; '>PROJET ZOIDBERG</h1>", unsafe_allow_html=True)
@@ -94,16 +98,19 @@ def features_cnn_tl(pil_img, size=(224, 224)):
 @st.cache_resource
 def load_models():
     models = {}
-    models["rfc"]        = joblib.load("../models/rfc.joblib")
-    models["brfc"]       = joblib.load("../models/brfc.joblib")
-    # SVC : scaler et PCA non disponibles -> désactivé
-    models["svc"]        = joblib.load("../models/scaler_pca_svc.joblib")
-    # models["svc_scaler"] = joblib.load("../models/svc_scaler.joblib")
-    # models["svc_pca"]    = joblib.load("../models/svc_pca.joblib")
-    models["knn"]        = joblib.load("../models/knn_final.joblib")   # ← corrigé
-    models["knn_scaler"] = joblib.load("../models/scaler_knn.joblib")
-    models["cnn"]        = load_model("../models/cnn.h5")
-    models["cnn_tl"]     = load_model("../models/cnn_tl.h5")
+
+    models["rfc"] = joblib.load(ROOT_DIR / "models" / "rfc.joblib")
+    models["brfc"] = joblib.load(ROOT_DIR / "models" / "brfc.joblib")
+
+    # SVC (pipeline complet)
+    models["svc"] = joblib.load(ROOT_DIR / "models" / "scaler_pca_svc.joblib")
+
+    models["knn"] = joblib.load(ROOT_DIR / "models" / "knn_final.joblib")
+    models["knn_scaler"] = joblib.load(ROOT_DIR / "models" / "scaler_knn.joblib")
+
+    models["cnn"] = load_model(ROOT_DIR / "models" / "cnn.h5")
+    models["cnn_tl"] = load_model(ROOT_DIR / "models" / "cnn_tl.h5")
+
     return models
 
 

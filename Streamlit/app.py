@@ -9,6 +9,7 @@ from PIL import Image
 from tensorflow.keras.models import load_model
 from tensorflow.keras.applications.resnet50 import preprocess_input
 from pathlib import Path
+from tensorflow import keras
 
 BASE_DIR = Path(__file__).resolve().parent
 ROOT_DIR = BASE_DIR.parent
@@ -111,16 +112,16 @@ def load_models():
     #models["cnn"] = load_model(ROOT_DIR / "models" / "cnn.h5")
     #models["cnn_tl"] = load_model(ROOT_DIR / "models" / "cnn_tl.h5")
 
-    models["cnn"] = load_model(
+    models["cnn"] = keras.models.load_model(
         ROOT_DIR / "models" / "cnn.h5",
         compile=False,
-        safe_mode=False
+        custom_objects=None
     )
 
-    models["cnn_tl"] = load_model(
+    models["cnn_tl"] = keras.models.load_model(
         ROOT_DIR / "models" / "cnn_tl.h5",
         compile=False,
-        safe_mode=False
+        custom_objects=None
     )
 
     return models

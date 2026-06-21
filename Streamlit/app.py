@@ -108,8 +108,18 @@ def load_models():
     models["knn"] = joblib.load(ROOT_DIR / "models" / "knn_final.joblib")
     models["knn_scaler"] = joblib.load(ROOT_DIR / "models" / "scaler_knn.joblib")
 
-    models["cnn"] = load_model(ROOT_DIR / "models" / "cnn.h5")
-    models["cnn_tl"] = load_model(ROOT_DIR / "models" / "cnn_tl.h5")
+    #models["cnn"] = load_model(ROOT_DIR / "models" / "cnn.h5")
+    #models["cnn_tl"] = load_model(ROOT_DIR / "models" / "cnn_tl.h5")
+
+    models["cnn"] = load_model(
+        ROOT_DIR / "models" / "cnn.h5",
+        compile=False
+    )
+
+    models["cnn_tl"] = load_model(
+        ROOT_DIR / "models" / "cnn_tl.h5",
+        compile=False
+    )
 
     return models
 

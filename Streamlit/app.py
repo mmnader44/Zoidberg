@@ -16,7 +16,7 @@ ROOT_DIR = BASE_DIR.parent
 with st.sidebar:
     st.markdown("<h1 style='text-align: center; '>PROJET ZOIDBERG</h1>", unsafe_allow_html=True)
 
-    st.image(ROOT_DIR / "img" / "zoidberg_icon.png")
+    st.image("https://ibb.co/nNjMLCr8")
 
     st.markdown("<h1 style='text-align: center; '>Welcome to our pneumonia detection project</h1>", unsafe_allow_html=True)
     st.markdown("<h3 style='text-align: center; '>This application uses machine learning on chest X-ray images to help detect signs of pneumonia.</h3>", unsafe_allow_html=True)

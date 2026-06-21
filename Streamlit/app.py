@@ -113,12 +113,14 @@ def load_models():
 
     models["cnn"] = load_model(
         ROOT_DIR / "models" / "cnn.h5",
-        compile=False
+        compile=False,
+        safe_mode=False
     )
 
     models["cnn_tl"] = load_model(
         ROOT_DIR / "models" / "cnn_tl.h5",
-        compile=False
+        compile=False,
+        safe_mode=False
     )
 
     return models

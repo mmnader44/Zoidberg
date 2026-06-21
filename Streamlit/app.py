@@ -96,6 +96,8 @@ def features_cnn_tl(pil_img, size=(224, 224)):
 # =====================================================================
 # Chargement des modèles  
 # =====================================================================
+import tensorflow as tf
+tf.keras.utils.disable_interactive_logging()
 @st.cache_resource
 def load_models():
     models = {}
